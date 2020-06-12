@@ -1,12 +1,12 @@
 # Argon One Radio
 
-A script to turn the ArgonOne Raspberri Pi Case into a headless internet radio. The power button is reconfigured to provide "skip to next station" upon double press.
+A script to turn the ArgonOne Raspberry Pi Case into a headless internet radio. The power button is reconfigured to provide "skip to next station" upon double press.
 
 ## Features
-- When off press power button once
+- When off press power button once to turn on
 - MPC auto plays a default playlist of stations within about a minute of bootup
-- MPC is set to auto repeat all stations
-- Stations managed by m3u file accessible via file share
+- MPC is set to auto repeat all stations at 85% volume
+- Stations managed by .m3u file accessible via file share or in /var/lib/mpd/playlists
 - Double press power button to skip to next station
 - Hold power button for about 4 seconds to power off
 
