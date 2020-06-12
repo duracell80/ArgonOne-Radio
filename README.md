@@ -10,6 +10,9 @@ A script to turn the ArgonOne Raspberry Pi Case into a headless internet radio. 
 - Double press power button to skip to next station
 - Hold power button for about 4 seconds to power off
 
+![Argon One Case](https://i.pcmag.com/imagery/articles/01P55E1Jzz6NT5bZBlIexMv-1.fit_scale.size_2698x1517.v1588677265.jpg)
+
+
 ## Ready the SD Card
 - Flash a version of Raspbian Lite to a micro SD card.
 - Hook up an ethernet cable, headphones, monitor, keyboard and mouse to the Argon One, insert the card and power on
