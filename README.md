@@ -61,3 +61,10 @@ https://streams.radio.co/se1a320b47/listen
 As long as you have a USB power supply and an AUX in port for your car's audio system, you'll be able to hook up the Argon One to the car. Upon pressing the power button wait for a station to start playing. If there's no audio, make sure you have your phone's hotspot turned on and that you've managed previously to connect to the WiFi hotspot using this Pi. I found the 5GhZ band to be smoother and free from network congestion.
 
 Note: Always keep your attention on the road, this one button operation is meant to be as distraction free as possible.
+
+
+## ToDo (suggestions welcome)
+- When using in car and phone hotspot goes down, reconnect without powercycle
+- Single press to skip forward
+- Double press to skip back
+- Config option to download one episode of a podcast to play as first playlist item
