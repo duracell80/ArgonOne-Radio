@@ -20,7 +20,7 @@ argon_check_pkg() {
 
 sudo apt-get update -y
 
-pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc samba samba-common-bin git)
+pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc git)
 for curpkg in ${pkglist[@]}; do
 	sudo apt-get install -y $curpkg
 	RESULT=$(argon_check_pkg "$curpkg")
@@ -51,6 +51,11 @@ sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_serial 0
 sudo raspi-config nonint do_ssh 0
 sudo raspi-config nonint do_boot_behaviour B2
+sudo raspi-config nonint do_expand_rootfs
+
+
+sudo apt-get install samba -y
+sudo apt-get install samba-common-bin -y
 
 sudo chmod 775 /var/lib/mpd/playlists/
 
@@ -554,7 +559,5 @@ else
 	echo Use 'argonone-uninstall' to uninstall
 fi
 echo
-
-sudo raspi-config nonint do_expand_rootfs
 
 sudo reboot
