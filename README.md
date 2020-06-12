@@ -50,6 +50,14 @@ Volume 25%
 $ mpc volume 25
 ```
 
+## Using an MPD Client
+I use the M.A.L.P MPD client to interact with the radio. If using a phone's hotspot feature in car using MALP is highly recommended. I also use Android phones and Termux is an excellent app for SSH into the Pi from the phone. Using nmap can find the address of the Pi.
+
+- Download the app
+- Add a profile using your IP
+- For example in the car my Pi's address is 192.168.43.51
+- Over Ethernet my IP address is 192.168.2.58
+
 ## Add and Remove Stations
 Obtain the Pi's IP address and use this to connect to the fileshare. For example on Windows 10, hit start and type `\\192.168.2.58\` enter pi as the username and raspberry as the password. You now have access to the MPD playlists folder via the "radio" folder. Edit the file in there to add or remove stations.
 
