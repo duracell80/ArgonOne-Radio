@@ -76,7 +76,7 @@ fi
 
 if [ ! -f $radiostartfile ]; then
     sudo touch $radiostartfile
-    sudo chmod 666 $radiostartfile
+    sudo chmod 755 $radiostartfile
     echo '#!/bin/bash' >> $radiostartfile
     echo 'mpc clear' >> $radiostartfile
     echo 'mpc repeat on' >> $radiostartfile
