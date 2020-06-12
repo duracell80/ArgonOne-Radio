@@ -48,7 +48,7 @@ $ mpc volume 25
 ```
 
 ## Add and Remove Stations
-Obtain the Pi's IP address and use this to connect to the fileshare. For example on Windows 10, hit start and type \\192.168.2.58\ enter pi as the username and raspberry as the password. You now have access to the MPD playlists folder via the "radio" folder. Edit the file in there to add or remove stations.
+Obtain the Pi's IP address and use this to connect to the fileshare. For example on Windows 10, hit start and type `\\192.168.2.58\` enter pi as the username and raspberry as the password. You now have access to the MPD playlists folder via the "radio" folder. Edit the file in there to add or remove stations.
 
 Example format:
 ```
