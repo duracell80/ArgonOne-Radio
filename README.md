@@ -19,7 +19,7 @@ A script to turn the ArgonOne Raspberry Pi Case into a headless internet radio. 
 - Login with user pi and password raspberry
 
 ## Set Wi-Fi Country, Network and SSH
-Set the Pi up, change the locale, activate SSH and anything else you would normally do in raspi-config, if you know you won;t need audio over HDMI go ahead in advanced options > audio and force 3.5mm.
+Set the Pi up, change the locale, activate SSH and anything else you would normally do in raspi-config, if you know you won't need audio over HDMI go ahead in advanced options > audio and force 3.5mm.
 ```
 $ sudo raspi-config
 ```
@@ -71,3 +71,4 @@ Note: Always keep your attention on the road, this one button operation is meant
 - Single press to skip forward
 - Double press to skip back
 - Config option to download one episode of a podcast to play as first playlist item
+- GPIO pins for a button HAT (possiblity of different "presets" or "station memory" for different .m3u files)
