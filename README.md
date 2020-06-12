@@ -36,3 +36,28 @@ $ ./install.sh
 The script will run, if promoted by Samba's install say No to WINS and enter a password for the pi user such as "raspberry". You can then use this samba share to access and edit the radio playlist which contains the stations located in /var/lib/mpd/playlists. Wait for the Pi to reboot and listen for the first station in the sample playlist to start playing.
 
 To advance to the next station double press the power button. To shutdown the pi, hold the power button for about 4 or 5 seconds.
+
+## Adjusting the Volume
+Via SSH or directly with a keyboard use the commands:
+```
+Volume 85%
+$ mpc volume 85
+
+Volume 25%
+$ mpc volume 25
+```
+
+## Add and Remove Stations
+Obtain the Pi's IP address and use this to connect to the fileshare. For example on Windows 10, hit start and type \\192.168.2.58\ enter pi as the username and raspberry as the password. You now have access to the MPD playlists folder via the "radio" folder. Edit the file in there to add or remove stations.
+
+Example format:
+```
+#EXTM3U
+#EXTINF:-1,Cafe Del Mar Radio
+https://streams.radio.co/se1a320b47/listen
+```
+
+## Usage in a car
+As long as you have a USB power supply and an AUX in port for your car's audio system, you'll be able to hook up the Argon One to the car. Upon pressing the power button wait for a station to start playing. If there's no audio, make sure you have your phone's hotspot turned on and that you've managed previously to connect to the WiFi hotspot using this Pi. I found the 5GhZ band to be smoother and free from network congestion.
+
+Note: Always keep your attention on the road, this one button operation is meant to be as distraction free as possible.
