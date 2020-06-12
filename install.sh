@@ -17,7 +17,7 @@ argon_check_pkg() {
         echo "OK"
     fi
 }
-sudo apt-get upgrade -y
+
 sudo apt-get update -y
 
 pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc samba samba-common-bin git)
@@ -87,7 +87,7 @@ if [ ! -f $radiostartfile ]; then
 fi
 
 sudo chmod 775 /var/lib/mpd/playlists/*
-sudo chmod 775 $sambaconfigfile
+sudo chmod 666 $sambaconfigfile
 
 
 
@@ -102,7 +102,8 @@ echo 'directory mask = 0777' >> $sambaconfigfile
 echo 'Public = yes' >> $sambaconfigfile
 echo 'Guest ok = yes' >> $sambaconfigfile
 
-sudo smbpasswd -n -a pi
+sudo smbpasswd -a pi
+sudo samba restart
 
 
 
