@@ -42,6 +42,7 @@ configscript=/usr/bin/argonone-config
 removescript=/usr/bin/argonone-uninstall
 sambaconfigfile=/etc/samba/smb.conf
 radiostartfile=~/start_radio.sh
+radiofolder=/var/lib/mpd/playlists
 radiofile=/var/lib/mpd/playlists/radio_default.m3u
 
 daemonfanservice=/lib/systemd/system/$daemonname.service
@@ -181,6 +182,7 @@ echo 'GPIO.setwarnings(False)' >> $powerbuttonscript
 echo 'GPIO.setmode(GPIO.BCM)' >> $powerbuttonscript
 echo 'shutdown_pin=4' >> $powerbuttonscript
 echo 'GPIO.setup(shutdown_pin, GPIO.IN,  pull_up_down=GPIO.PUD_DOWN)' >> $powerbuttonscript
+echo 'os.system("/home/pi/start_radio.sh")' >> $powerbuttonscript
 
 echo 'def shutdown_check():' >> $powerbuttonscript
 echo '	while True:' >> $powerbuttonscript
