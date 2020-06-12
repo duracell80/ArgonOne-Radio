@@ -18,8 +18,8 @@ argon_check_pkg() {
     fi
 }
 
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc samba samba-common-bin git)
 for curpkg in ${pkglist[@]}; do
