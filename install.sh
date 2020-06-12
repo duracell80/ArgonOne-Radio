@@ -82,6 +82,7 @@ if [ ! -f $radiostartfile ]; then
     echo 'mpc repeat on' >> $radiostartfile
     echo 'mpc load radio_default' >> $radiostartfile
     echo 'mpc play' >> $radiostartfile
+    echo 'mpc volume 85' >> $radiostartfile
 fi
 
 sudo chmod 775 /var/lib/mpd/playlists/*
