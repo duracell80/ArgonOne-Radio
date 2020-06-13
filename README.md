@@ -3,11 +3,12 @@
 A script to turn the ArgonOne Raspberry Pi Case into a headless internet radio. The power button is reconfigured to provide "skip to next station" upon double press. MPD is used to auto play stations from one default playlist. The aim is to be as barebones as possible without the need for Mopidy, Volumio or Moode.
 
 ## Features
+- The most hands off Radio scripts for Pi automation!
 - WiFi keep alive, when using in car and phone hotspot goes down, resume MPC on reconnect!!
+- Double press power button to skip to next station
 - MPC auto plays a default playlist of stations within about a minute of bootup
 - MPC is set to auto repeat all stations at 85% volume
 - Stations managed by .m3u file accessible via file share or in /var/lib/mpd/playlists
-- Double press power button to skip to next station
 - Hold power button for about 4 seconds to power off
 - When off press power button once to turn on
 
