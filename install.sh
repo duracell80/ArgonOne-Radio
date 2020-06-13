@@ -110,7 +110,8 @@ if [ ! -f $wificheckfile ]; then
     echo ' else' >> $wificheckfile
     echo '  echo "Network connection down! Attempting reconnection."' >> $wificheckfile
     echo '  ifup --force wlan0' >> $wificheckfile
-    echo '  sleep 10' >> $wificheckfile
+    echo '  sleep 20' >> $wificheckfile
+    echo '  mpc play' >> $wificheckfile
     echo ' fi' >> $wificheckfile
     echo 'done' >> $wificheckfile
 fi
