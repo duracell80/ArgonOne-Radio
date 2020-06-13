@@ -78,7 +78,7 @@ if [ ! -f $radiofile ]; then
     echo 'http://ice2.somafm.com/gsclassic-128-aac' >> $radiofile
 
     echo '#EXTINF:-1,SomaFM - Fluid' >> $radiofile
-    echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile2
+    echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile
 fi
 
 if [ ! -f $radiostartfile ]; then
