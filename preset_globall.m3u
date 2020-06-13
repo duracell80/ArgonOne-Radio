@@ -1,0 +1,58 @@
+#EXTM3U
+
+#EXTINF:-1,Cafe Del Mar Radio
+https://streams.radio.co/se1a320b47/listen
+
+#EXTINF:-1,Dash Radio - Waves
+http://ice55.securenetsystems.net/DASH55
+
+#EXTINF:-1,Chill Australia
+https://sbs-ice.streamguys1.com/sbschill-sbs-web
+
+#EXTINF:-1,SomaFM - Lush
+http://ice1.somafm.com/lush-128-aac
+
+#EXTINF:-1,SomaFM - Groove Salad
+http://ice1.somafm.com/groovesalad-128-aac
+
+#EXTINF:-1,SomaFM - Groove Salad Classic
+http://ice2.somafm.com/gsclassic-128-aac
+
+#EXTINF:-1,0N Radio - Chillout
+http://0n-chillout.radionetz.de/0n-chillout.aac
+
+#EXTINF:-1,BBC World Service
+http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-eieuk
+
+#EXTINF:-1,BBC Radio WM
+http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrwm_mf_p
+
+#EXTINF:-1,Audiophile - Jazz
+http://94.23.201.38:8020/stream/1/
+
+#EXTINF:-1,Audiophile - Lounge
+http://94.23.201.38:8030/stream/1/
+
+#EXTINF:-1,BBC Radio 4
+http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio4fm_mf_p
+
+#EXTINF:-1,BBC Radio 5
+http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio5live_mf_p
+
+#EXTINF:-1,BBC Radio 6
+http://bbcmedia.ic.llnwd.net/stream/bbcmedia_6music_mf_p
+
+#EXTINF:-1,Radio SoBro
+https://streamer.radio.co/s951fc6edc/listen
+
+#EXTINF:-1,Smooth Radio WM
+http://ice-the.musicradio.com:80/SmoothWestMidsMP3
+
+#EXTINF:-1,Talk Sport
+http://radio.talksport.com/stream
+
+#EXTINF:-1,Talk Sport 2
+http://radio.talksport.com/stream2
+
+#EXTINF:-1,Absolute Rock
+http://live-absolute.sharp-stream.com/absoluteclassicrock.mp3
