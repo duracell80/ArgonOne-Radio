@@ -52,6 +52,12 @@ Volume 25%
 $ mpc volume 25
 ```
 
+## Stop Playing When On and WiFi Down
+```
+$ sudo pkill -f "check_network.sh"
+$ mpc stop
+```
+
 ## Using an MPD Client
 I use the M.A.L.P MPD client to interact with the radio. If using a phone's hotspot feature in car using MALP is highly recommended. I also use Android phones and Termux is an excellent app for SSH into the Pi from the phone. Using nmap can find the address of the Pi.
 
