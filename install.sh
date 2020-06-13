@@ -97,7 +97,7 @@ fi
 	
 
 
-sudo chmod 775 /var/lib/mpd/playlists/*
+sudo chmod 777 /var/lib/mpd/playlists/*
 sudo chmod 666 $sambaconfigfile
 
 if [ ! -f $wificheckfile ]; then
