@@ -45,6 +45,7 @@ radiostartfile=~/start_radio.sh
 radiofolder=/var/lib/mpd/playlists
 radiofile=/var/lib/mpd/playlists/radio_default.m3u
 
+wificheckfile=~/check_network.sh
 daemonfanservice=/lib/systemd/system/$daemonname.service
 
 sudo raspi-config nonint do_i2c 0
@@ -91,9 +92,28 @@ if [ ! -f $radiostartfile ]; then
     echo 'mpc volume 85' >> $radiostartfile
 fi
 
+
+		
+	
+
+
 sudo chmod 775 /var/lib/mpd/playlists/*
 sudo chmod 666 $sambaconfigfile
 
+if [ ! -f $wificheckfile ]; then
+    sudo touch $wificheckfile
+    sudo chmod 777 $wificheckfile
+    echo '#!/bin/bash' >> $wificheckfile
+    echo 'while true ; do' >> $wificheckfile
+    echo ' if ifconfig wlan0 | grep -q "inet addr:" ; then' >> $wificheckfile
+    echo '  sleep 60' >> $wificheckfile
+    echo ' else' >> $wificheckfile
+    echo '  echo "Network connection down! Attempting reconnection."' >> $wificheckfile
+    echo '  ifup --force wlan0' >> $wificheckfile
+    echo '  sleep 10' >> $wificheckfile
+    echo ' fi' >> $wificheckfile
+    echo 'done' >> $wificheckfile
+fi
 
 
 echo '[RADIO]' >> $sambaconfigfile
