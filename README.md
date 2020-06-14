@@ -1,8 +1,13 @@
 # Argon One Case Internet Radio
 
-A script to turn the ArgonOne Raspberry Pi Case into a headless internet radio. The power button is reconfigured to provide "skip to next station" upon double press. MPD is used to auto play stations from one default playlist. The aim is to be as barebones as possible without the need for Mopidy, Volumio or Moode. 
+Have you ever noticed how simple a traditional radio actually is? Essentially it's preprganmed and laregly automated. You turn it on and it works. With FM or AM radio you actually did learn the order of the stations and if you weren't sure what the station was without RDS you would wait for the station ID bump or jingle. 
 
-The project may hold value to blind or visually impaired users and could be adapted for use by users of limited dexterity also. Ideally there should be no screens involved.
+These are a set of scripts to turn the ArgonOne Raspberry Pi Case into an automated internet radio. The power button is reconfigured to provide "skip to next station" upon double press. MPD is used to auto play stations from one default playlist. The aim is to be as barebones as possible without the need for Mopidy, Volumio or Moode. 
+
+The project may hold value for blind or visually impaired users with sighted help and could be adapted for use by users of limited dexterity also via GPIO. Ideally there should be no screens involved.
+
+![Argon One Case](https://i.pcmag.com/imagery/articles/01P55E1Jzz6NT5bZBlIexMv-1.fit_scale.size_2698x1517.v1588677265.jpg)
+
 
 ## Features
 - The most hands off Radio scripts for Pi automation!
@@ -13,8 +18,6 @@ The project may hold value to blind or visually impaired users and could be adap
 - Stations managed by .m3u file accessible via file share or in /var/lib/mpd/playlists
 - Hold power button for about 4 seconds to power off
 - When off press power button once to turn on
-
-![Argon One Case](https://i.pcmag.com/imagery/articles/01P55E1Jzz6NT5bZBlIexMv-1.fit_scale.size_2698x1517.v1588677265.jpg)
 
 
 ## Ready the SD Card
