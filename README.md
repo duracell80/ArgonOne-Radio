@@ -1,6 +1,6 @@
 # Argon One Automated Internet Radio
 
-Have you ever noticed how simple a traditional radio actually is? Essentially it's preprganmed and laregly automated. You turn it on and it works. With FM or AM radio you actually did learn the order of the stations and if you weren't sure what the station was without RDS you would wait for the station ID bump or jingle. 
+Have you ever noticed how simple a traditional radio actually is? Essentially it's preprogrammed easy to navigate and mostly automated. You turn it on and it works. With FM or AM radio you actually did learn the order of the stations and if you weren't sure what the station was without RDS you would wait for the station ID bump or jingle. 
 
 These are a set of scripts to turn the ArgonOne Raspberry Pi Case into an automated internet radio. The power button is reconfigured to provide "skip to next station" upon double press. MPD is used to auto play stations from one default playlist. The aim is to be as barebones as possible without the need for Mopidy, Volumio or Moode. 
 
