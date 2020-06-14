@@ -1,4 +1,4 @@
-# Argon One Case Internet Radio
+# Argon One Automated Internet Radio
 
 Have you ever noticed how simple a traditional radio actually is? Essentially it's preprganmed and laregly automated. You turn it on and it works. With FM or AM radio you actually did learn the order of the stations and if you weren't sure what the station was without RDS you would wait for the station ID bump or jingle. 
 
