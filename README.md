@@ -57,11 +57,28 @@ To advance to the next station double press the power button. To shutdown the pi
 ## Adjusting the Volume
 Via SSH or directly with a keyboard use the commands:
 ```
+Cursor Left and Right
+
 Volume 85%
 $ mpc volume 85
 
 Volume 25%
 $ mpc volume 25
+```
+
+## Tune in Stations
+With an airmouse or USB Remote Control:
+```
+Up = Next station
+Down = Previous Station
+Press "OK" or center of DPad to add now playing to a tagged list of likes.
+```
+
+With a keyboard:
+```
+Arrow Up = Next station
+Arrow Down = Previous Station
+Press Enter to add now playing to a tagged list of likes.
 ```
 
 ## Stop Playing When On and WiFi Down
