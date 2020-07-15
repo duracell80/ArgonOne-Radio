@@ -82,10 +82,10 @@ if [ ! -f $radiofile ]; then
     echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile
 fi
 
-cp ~/ArgonOne-Radio/start_radio.sh ~/
-cp ~/ArgonOne-Radio/stop_radio.sh ~/
-sudo chmod +x ~/start_radio.sh
-sudo chmod +x ~/stop_radio.sh
+cp ~/ArgonOne-Radio/start_radio.sh /home/pi/
+cp ~/ArgonOne-Radio/stop_radio.sh /home/pi/
+sudo chmod +x /home/pi/start_radio.sh
+sudo chmod +x /home/pi/stop_radio.sh
 
 		
 	
