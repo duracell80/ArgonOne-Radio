@@ -84,8 +84,8 @@ fi
 
 cp ~/ArgonOne-Radio/start_radio.sh ~/
 cp ~/ArgonOne-Radio/stop_radio.sh ~/
-sudo chmod +x $radiostartfile ~/start_radio.sh
-sudo chmod +x $radiostartfile ~/stop_radio.sh
+sudo chmod +x ~/start_radio.sh
+sudo chmod +x ~/stop_radio.sh
 
 		
 	
