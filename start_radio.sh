@@ -14,7 +14,7 @@ printf "Press q to quit p to play or pause else ...\n\n"
 printf "    Up            = Next\n"
 printf "    Down          = Previous\n"
 printf "    Left & Right  = Volume\n"
-printf "    Shift+M       = Tag Now Playing to File \n"
+printf "    Enter         = Tag Now Playing to File \n"
 printf "    Shift+S       = Stop WiFi Reconnect Auto Play \n\n\n"
 
 while : ; do
@@ -27,7 +27,7 @@ while : ; do
             mpc volume +5
         elif [[ $k == *"D"* ]] ; then
             mpc volume -5        
-        elif [[ $k == *"M"* ]] ; then
+        elif [[ $k = "" ]] ; then
             NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
             TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
             if [ $TLEN -lt 10 ] ; then
@@ -38,7 +38,6 @@ while : ; do
                   NOWTAGGED="[ ${NOWDATETIME} ] ${NOWPLAYING}" 
                   echo $NOWTAGGED >> tagged.txt
             fi
-
             
         elif [[ $k == "p" ]] ; then
             mpc toggle
