@@ -24,13 +24,14 @@ The project may hold value for blind or visually impaired users with sighted hel
 
 
 ## Ready the SD Card
-- Flash a version of Raspbian Lite to a micro SD card.
+- Flash a version of RaspberryOS Lite to a micro SD card.
 - Hook up an ethernet cable, headphones, monitor, keyboard and mouse to the Argon One, insert the card and power on
 - Login with user pi and password raspberry
 
 ## Set Wi-Fi Country, Network and SSH
-Set the Pi up, change the locale, activate SSH and anything else you would normally do in raspi-config, if you know you won't need audio over HDMI go ahead in advanced options > audio and force 3.5mm.
+Set the Pi up, change the locale, activate SSH and anything else you would normally do in raspi-config, if you know you won't need audio over HDMI go ahead in advanced options > audio and force 3.5mm (Headphones).
 ```
+Username: pi Password: raspberry
 $ sudo raspi-config
 ```
 Tip: If using in car set the WiFi as the SSID of your phone's hotspot feature, then use the Ethernet connection in the house to access the Pi. For now continue on the Ethernet connection, use ifconfig to find the IP address to connect via SSH from this point forward.
