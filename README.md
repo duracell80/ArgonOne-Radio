@@ -46,7 +46,7 @@ $ chmod +x *.sh
 $ ./install.sh
 ```
 
-The script will run, if promoted by Samba's install say No to WINS and enter a password for the pi user such as "raspberry". You can then use this samba share to access and edit the radio playlist which contains the stations located in /var/lib/mpd/playlists. Wait for the Pi to reboot and listen for the first station in the sample playlist to start playing.
+The script will run, if prompted by Samba's install say No to WINS and enter a password for the pi user such as "raspberry". You can then use this samba share to access and edit the radio playlist which contains the stations located in /var/lib/mpd/playlists. Wait for the Pi to reboot and listen for the first station in the sample playlist to start playing.
 
 To advance to the next station double press the power button. To shutdown the pi, hold the power button for about 4 or 5 seconds.
 
