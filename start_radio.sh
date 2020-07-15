@@ -14,7 +14,7 @@ printf "Press q to quit p to play or pause else ...\n\n"
 printf "    Up            = Next\n"
 printf "    Down          = Previous\n"
 printf "    Left & Right  = Volume\n"
-printf "    Shisft+M       = Tag Now Playing to File \n"
+printf "    Shift+M       = Tag Now Playing to File \n"
 printf "    Shift+S       = Stop WiFi Reconnect Auto Play \n\n\n"
 
 while : ; do
