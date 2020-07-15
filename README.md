@@ -33,6 +33,9 @@ Set the Pi up, change the locale, activate SSH and anything else you would norma
 ```
 Username: pi Password: raspberry
 $ sudo raspi-config
+
+Set - Networking options, force audio through 3.5mm, set to auto login to CLI
+Reboot
 ```
 Tip: If using in car set the WiFi as the SSID of your phone's hotspot feature, then use the Ethernet connection in the house to access the Pi. For now continue on the Ethernet connection, use ifconfig to find the IP address to connect via SSH from this point forward.
 
