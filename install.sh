@@ -83,7 +83,6 @@ fi
 
 if [ ! -f $radiostartfile ]; then
     sudo touch $radiostartfile
-    sudo chmod 777 $radiostartfile
     echo '#!/bin/bash' >> $radiostartfile
     echo 'mpc clear' >> $radiostartfile
     echo 'mpc repeat on' >> $radiostartfile
@@ -92,6 +91,8 @@ if [ ! -f $radiostartfile ]; then
     echo 'mpc volume 85' >> $radiostartfile
 fi
 
+
+sudo chmod 777 $radiostartfile
 
 		
 	
