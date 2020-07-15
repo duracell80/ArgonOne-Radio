@@ -125,7 +125,7 @@ echo 'Guest ok = yes' >> $sambaconfigfile
 sudo smbpasswd -a pi
 sudo samba restart
 
-
+echo "./start_radio.sh" >> /home/pi/.profile
 
 
 
@@ -575,5 +575,7 @@ else
 	echo Use 'argonone-uninstall' to uninstall
 fi
 echo
+
+
 
 sudo reboot
