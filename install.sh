@@ -100,11 +100,11 @@ if [ ! -f $wificheckfile ]; then
     echo '#!/bin/bash' >> $wificheckfile
     echo 'while true ; do' >> $wificheckfile
     echo ' if ifconfig wlan0 | grep -q "inet addr:" ; then' >> $wificheckfile
-    echo '  sleep 30' >> $wificheckfile
+    echo '  sleep 15' >> $wificheckfile
     echo ' else' >> $wificheckfile
     echo '  echo "Network connection down! Attempting reconnection."' >> $wificheckfile
     echo '  ifup --force wlan0' >> $wificheckfile
-    echo '  sleep 10' >> $wificheckfile
+    echo '  sleep 5' >> $wificheckfile
     echo '  mpc play' >> $wificheckfile
     echo ' fi' >> $wificheckfile
     echo 'done' >> $wificheckfile
