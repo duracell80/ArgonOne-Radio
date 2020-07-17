@@ -214,7 +214,7 @@ echo '		while GPIO.input(shutdown_pin) == GPIO.HIGH:' >> $powerbuttonscript
 echo '			time.sleep(0.01)' >> $powerbuttonscript
 echo '			pulsetime += 1' >> $powerbuttonscript
 echo '		if pulsetime >=2 and pulsetime <=3:' >> $powerbuttonscript
-echo '			os.system("mpc repeat on & mpc play & mpc next")' >> $powerbuttonscript
+echo '			os.system("mpc play & mpc next")' >> $powerbuttonscript
 echo '		elif pulsetime >=4 and pulsetime <=5:' >> $powerbuttonscript
 echo '			os.system("shutdown now -h")' >> $powerbuttonscript
 
