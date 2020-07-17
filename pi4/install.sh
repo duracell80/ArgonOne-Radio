@@ -577,4 +577,12 @@ sudo smbpasswd -a pi
 sudo samba restart
 
 echo "./start_radio.sh" >> /home/pi/.profile
+
+clear
+echo "And Finally ... Set Audio Master Level above 50 ( 85 Recommended )"
+
+sleep 5
+amixer
+
+
 sudo reboot
