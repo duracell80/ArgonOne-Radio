@@ -576,6 +576,6 @@ else
 fi
 echo
 
-
+sleep 20
 
 sudo reboot
