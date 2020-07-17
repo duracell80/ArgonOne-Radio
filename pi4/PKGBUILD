@@ -12,11 +12,11 @@ provides=('argonone')
 install=argonone.install
 
 source=(
-  "https://raw.githubusercontent.com/kounch/argonone/master/argonone-config"
-  "https://raw.githubusercontent.com/kounch/argonone/master/argononed-poweroff.py"
-  "https://raw.githubusercontent.com/kounch/argonone/master/argononed.conf"
-  "https://raw.githubusercontent.com/kounch/argonone/master/argononed.py"
-  "https://raw.githubusercontent.com/kounch/argonone/master/argononed.service"
+  "https://raw.githubusercontent.com/duracell80/ArgonOne-Radio/master/pi4/argonone-config"
+  "https://raw.githubusercontent.com/duracell80/ArgonOne-Radio/master/argononed-poweroff.py"
+  "https://raw.githubusercontent.com/duracell80/ArgonOne-Radio/master/argononed.conf"
+  "https://raw.githubusercontent.com/duracell80/ArgonOne-Radio/master/argononed.py"
+  "https://raw.githubusercontent.com/duracell80/ArgonOne-Radio/master/argononed.service"
   )
 
 sha256sums=(
