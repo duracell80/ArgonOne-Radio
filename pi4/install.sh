@@ -18,7 +18,7 @@ argon_check_pkg() {
     fi
 }
 
-pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools)
+pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc)
 for curpkg in ${pkglist[@]}; do
 	sudo apt-get install -y $curpkg
 	RESULT=$(argon_check_pkg "$curpkg")
@@ -532,13 +532,14 @@ if [ ! -f $radiofile ]; then
     echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile
 fi
 
-cp ~/ArgonOne-Radio/start_radio.sh /home/pi/
-cp ~/ArgonOne-Radio/stop_radio.sh /home/pi/
+cp ../start_radio.sh /home/pi/
+cp ../stop_radio.sh /home/pi/
+sudo cp -f ../mpd.conf /etc/mpd/
 sudo chmod +x /home/pi/start_radio.sh
 sudo chmod +x /home/pi/stop_radio.sh
 
-		
-	
+
+
 
 
 sudo chmod 777 /var/lib/mpd/playlists/*
