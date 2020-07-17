@@ -49,6 +49,7 @@ radiofile=/var/lib/mpd/playlists/radio_default.m3u
 wificheckfile=~/check_network.sh
 daemonfanservice=/lib/systemd/system/$daemonname.service
 
+sudo rfkill unblock 0
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_serial 0
 sudo raspi-config nonint do_ssh 0
