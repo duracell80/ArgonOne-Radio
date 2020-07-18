@@ -8,9 +8,11 @@ mpc play
 mpc volume 85
 
 PLEN=$(cat /var/lib/mpd/playlists/radio_default.m3u | wc -l)
+WLAN=$(ifconfig wlan0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
+ETHO=$(ifconfig eth0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 
 clear    
-printf "Online Radio Tuner [ ${PLEN} Stations in Memory ]\n\n"
+printf "Online Radio Tuner [ ${PLEN} Stations in Memory - WiFi: ${WLAN} LAN: ${ETHO} ]\n\n"
 
 printf "Press q to quit p to play or pause else ...\n\n"
 printf "        Up              = Next\n"
