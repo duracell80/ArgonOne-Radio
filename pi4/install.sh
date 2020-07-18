@@ -499,8 +499,6 @@ radiofolder=/var/lib/mpd/playlists
 radiofile=/var/lib/mpd/playlists/radio_default.m3u
 wificheckfile=~/check_network.sh
 
-sudo raspi-config nonint do_i2c 0
-sudo raspi-config nonint do_serial 0
 sudo raspi-config nonint do_ssh 0
 sudo raspi-config nonint do_boot_behaviour B2
 sudo raspi-config nonint do_expand_rootfs
@@ -584,5 +582,6 @@ echo "And Finally ... Set Audio Master Level above 50 ( 85 Recommended )"
 sleep 10
 alsamixer
 
-sleep 30
+sleep 10
+sudo rfkill unblock 0
 sudo reboot
