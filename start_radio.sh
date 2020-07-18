@@ -1,4 +1,6 @@
 #!/bin/bash
+sudo rfkill unblock 0
+
 mpc clear
 mpc repeat on
 mpc load radio_default
@@ -11,11 +13,13 @@ clear
 printf "Online Radio Tuner [ ${PLEN} Stations in Memory ]\n\n"
 
 printf "Press q to quit p to play or pause else ...\n\n"
-printf "    Up            = Next\n"
-printf "    Down          = Previous\n"
-printf "    Left & Right  = Volume\n"
-printf "    Enter         = Tag Now Playing to File \n"
-printf "    Shift+S       = Stop WiFi Reconnect Auto Play \n\n\n"
+printf "        Up              = Next\n"
+printf "        Down            = Previous\n"
+printf "        Left & Right    = Volume\n"
+printf "        Enter           = Tag Now Playing to File \n"
+printf "        Shift+S         = Stop WiFi Reconnect Auto Play \n"
+printf "        Shift+R         = Reboot\n"
+printf "        Shift+P         = Power Off \n\n\n"
 
 while : ; do
         read -n 1 k <&1
@@ -45,6 +49,10 @@ while : ; do
             break
         elif [[ $k == "S" ]] ; then
             pkill check_network
+        elif [[ $k == "R" ]] ; then
+            sudo reboot
+        elif [[ $k == "P" ]] ; then
+            sudo shutdown -h now
         else
             NOWPLAYING=$(mpc -f "Station [ %track% ] - %artist% - %title% - %file%"  | head -n 1)
         fi
