@@ -61,6 +61,38 @@ do
                 fi
         fi
 
+	# TAG NOW PLAYING VIA REMOTE
+        if [[ $KEYS == *"104"* ]]; then
+                echo "Remote: Remember Now Playing"
+                NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
+                TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
+                if [ $TLEN -lt 10 ] ; then
+                  echo "Not Tagged: Missing Station Metadata"
+                else
+                  echo "\n\nTagged: ${NOWPLAYING}"
+                  NOWDATETIME=$(date +"%D %T")
+                  NOWTAGGED="[ ${NOWDATETIME} ] ${NOWPLAYING}" 
+                  echo $NOWTAGGED >> tagged.txt
+                fi
+        fi
+
+	# TAG NOW PLAYING VIA REMOTE
+        if [[ $KEYS == *"109"* ]]; then
+                echo "Remote: Remember Now Playing"
+                NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
+                TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
+                if [ $TLEN -lt 10 ] ; then
+                  echo "Not Tagged: Missing Station Metadata"
+                else
+                  echo "\n\nTagged: ${NOWPLAYING}"
+                  NOWDATETIME=$(date +"%D %T")
+                  NOWTAGGED="[ ${NOWDATETIME} ] ${NOWPLAYING}" 
+                  echo $NOWTAGGED >> tagged.txt
+                fi
+        fi
+
+
+
 	# MENU KEY
 	if [[ $KEYS == *"127"* ]]; then
   		echo "Remote: Cycling Presets ($SETS in memory)"
