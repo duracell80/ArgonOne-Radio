@@ -3,15 +3,15 @@ sudo rfkill unblock 0
 
 mpc clear
 mpc repeat on
-mpc load radio_default
+mpc load preset_0
 mpc play
 mpc volume 85
 
-PLEN=$(cat /var/lib/mpd/playlists/radio_default.m3u | wc -l)
+PLEN=$(cat /var/lib/mpd/playlists/preset_0.m3u | wc -l)
 WLAN=$(ifconfig wlan0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 ETHO=$(ifconfig eth0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 
-clear    
+clear
 printf "Online Radio Tuner [ ${PLEN} Stations in Memory - WiFi: ${WLAN} LAN: ${ETHO} ]\n\n"
 
 printf "Press q to quit p to play or pause else ...\n\n"
@@ -23,6 +23,7 @@ printf "        Shift+S         = Stop WiFi Reconnect Auto Play \n"
 printf "        Shift+R         = Reboot\n"
 printf "        Shift+P         = Power Off \n\n\n"
 
+
 while : ; do
         read -n 1 k <&1
         if [[ $k == *"A"* ]] ; then
@@ -32,7 +33,7 @@ while : ; do
         elif [[ $k == *"C"* ]] ; then
             mpc volume +5
         elif [[ $k == *"D"* ]] ; then
-            mpc volume -5        
+            mpc volume -5
         elif [[ $k = "" ]] ; then
             NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
             TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
@@ -44,7 +45,7 @@ while : ; do
                   NOWTAGGED="[ ${NOWDATETIME} ] ${NOWPLAYING}" 
                   echo $NOWTAGGED >> tagged.txt
             fi
-            
+
         elif [[ $k == "p" ]] ; then
             mpc toggle
         elif [[ $k == "q" ]] ; then

@@ -496,7 +496,7 @@ argonone-config
 sambaconfigfile=/etc/samba/smb.conf
 radiostartfile=~/start_radio.sh
 radiofolder=/var/lib/mpd/playlists
-radiofile=/var/lib/mpd/playlists/radio_default.m3u
+radiofile=/var/lib/mpd/playlists/preset_0.m3u
 wificheckfile=~/check_network.sh
 
 sudo raspi-config nonint do_ssh 0
