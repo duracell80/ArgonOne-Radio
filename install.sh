@@ -21,7 +21,7 @@ argon_check_pkg() {
 sudo apt-get update -y
 sudo apt-get install git -y
 
-pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc git)
+pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc libttspico-utils)
 for curpkg in ${pkglist[@]}; do
 	sudo apt-get install -y $curpkg
 	RESULT=$(argon_check_pkg "$curpkg")
