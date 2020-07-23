@@ -577,6 +577,8 @@ else
 fi
 echo
 
+sudo cp -f ./mpd.conf /etc
+
 cd tts
 dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
 

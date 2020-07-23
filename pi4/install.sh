@@ -576,8 +576,12 @@ sudo samba restart
 
 echo "./start_radio.sh" >> /home/pi/.profile
 
+sudo cp -f ../mpd.conf /etc
+
 cd ../tts
 dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
+
+sleep 10
 
 clear
 echo "And Finally ... Set Audio Master Level above 50 ( 85 Recommended )"
