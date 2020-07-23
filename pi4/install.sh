@@ -576,7 +576,7 @@ sudo samba restart
 
 echo "./start_radio.sh" >> /home/pi/.profile
 
-cd tts
+cd ../tts
 dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
 
 clear
