@@ -18,7 +18,7 @@ argon_check_pkg() {
     fi
 }
 
-pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc libttspico-utils)
+pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc autoconf libtool help2man libpopt-dev debhelper)
 for curpkg in ${pkglist[@]}; do
 	sudo apt-get install -y $curpkg
 	RESULT=$(argon_check_pkg "$curpkg")
@@ -575,6 +575,9 @@ sudo smbpasswd -a pi
 sudo samba restart
 
 echo "./start_radio.sh" >> /home/pi/.profile
+
+cd tts
+dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
 
 clear
 echo "And Finally ... Set Audio Master Level above 50 ( 85 Recommended )"

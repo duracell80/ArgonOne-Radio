@@ -241,7 +241,7 @@ done &
 while :
 do
 	# SIGTERM SHOWKEY TO SPEED UP REMOTE CONTROL RESPONSIVENESS
-	sleep 0.5
+	sleep 0.2
 	sudo pkill showkey
 
 	YOLO=$(mpc status | sed -n '/volume/p' | cut -c8-10 | sed 's/^[ \t]*//')

@@ -21,7 +21,7 @@ argon_check_pkg() {
 sudo apt-get update -y
 sudo apt-get install git -y
 
-pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc libttspico-utils)
+pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc autoconf libtool help2man libpopt-dev debhelper)
 for curpkg in ${pkglist[@]}; do
 	sudo apt-get install -y $curpkg
 	RESULT=$(argon_check_pkg "$curpkg")
@@ -576,6 +576,9 @@ else
 	echo Use 'argonone-uninstall' to uninstall
 fi
 echo
+
+cd tts
+dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
 
 sleep 20
 
