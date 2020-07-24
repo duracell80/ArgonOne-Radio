@@ -18,9 +18,6 @@ argon_check_pkg() {
     fi
 }
 
-sudo apt-get update -y
-sudo apt-get install git -y
-
 pkglist=(raspi-gpio python-rpi.gpio python3-rpi.gpio python-smbus python3-smbus i2c-tools mpd mpc autoconf libtool help2man libpopt-dev debhelper)
 for curpkg in ${pkglist[@]}; do
 	sudo apt-get install -y $curpkg
@@ -35,103 +32,19 @@ for curpkg in ${pkglist[@]}; do
 done
 
 
+
 daemonname="argononed"
 powerbuttonscript=/usr/bin/$daemonname.py
 shutdownscript="/lib/systemd/system-shutdown/"$daemonname"-poweroff.py"
 daemonconfigfile=/etc/$daemonname.conf
 configscript=/usr/bin/argonone-config
 removescript=/usr/bin/argonone-uninstall
-sambaconfigfile=/etc/samba/smb.conf
-radiostartfile=~/start_radio.sh
-radiofolder=/var/lib/mpd/playlists
-radiofile=/var/lib/mpd/playlists/preset_0.m3u
 
-wificheckfile=~/check_network.sh
 daemonfanservice=/lib/systemd/system/$daemonname.service
 
-sudo rfkill unblock 0
 sudo raspi-config nonint do_i2c 0
 sudo raspi-config nonint do_serial 0
-sudo raspi-config nonint do_ssh 0
-sudo raspi-config nonint do_boot_behaviour B2
-sudo raspi-config nonint do_expand_rootfs
 
-
-sudo apt-get install samba -y
-sudo apt-get install samba-common-bin -y
-
-sudo chmod 775 /var/lib/mpd/playlists/
-
-if [ ! -f $radiofile ]; then
-	# Generate radio playlist
-	sudo touch $radiofile
-    sudo chmod 666 $radiofile
-    echo '#EXTM3U' >> $radiofile
-    echo '#EXTINF:-1,Cafe Del Mar Radio' >> $radiofile
-    echo 'https://streams.radio.co/se1a320b47/listen' >> $radiofile
-
-    echo '#EXTINF:-1,SomaFM - Lush' >> $radiofile
-    echo 'http://ice1.somafm.com/lush-128-aac' >> $radiofile
-
-    echo '#EXTINF:-1,SomaFM - Groove Salad' >> $radiofile
-    echo 'http://ice1.somafm.com/groovesalad-128-aac' >> $radiofile
-
-    echo '#EXTINF:-1,SomaFM - Groove Salad Classic' >> $radiofile
-    echo 'http://ice2.somafm.com/gsclassic-128-aac' >> $radiofile
-
-    echo '#EXTINF:-1,SomaFM - Fluid' >> $radiofile
-    echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile
-fi
-
-cp ~/ArgonOne-Radio/start_radio.sh /home/pi/
-cp ~/ArgonOne-Radio/stop_radio.sh /home/pi/
-sudo chmod +x /home/pi/start_radio.sh
-sudo chmod +x /home/pi/stop_radio.sh
-
-		
-	
-
-
-sudo chmod 777 /var/lib/mpd/playlists/*
-sudo chmod 666 $sambaconfigfile
-
-if [ ! -f $wificheckfile ]; then
-    sudo touch $wificheckfile
-    sudo chmod 777 $wificheckfile
-    echo '#!/bin/bash' >> $wificheckfile
-    echo 'while true ; do' >> $wificheckfile
-    echo ' if ifconfig wlan0 | grep -q "inet addr:" ; then' >> $wificheckfile
-    echo '  sleep 15' >> $wificheckfile
-    echo ' else' >> $wificheckfile
-    echo '  echo "Network connection down! Attempting reconnection."' >> $wificheckfile
-    echo '  ifup --force wlan0' >> $wificheckfile
-    echo '  sleep 5' >> $wificheckfile
-    echo '  mpc play' >> $wificheckfile
-    echo ' fi' >> $wificheckfile
-    echo 'done' >> $wificheckfile
-fi
-
-
-echo '[RADIO]' >> $sambaconfigfile
-echo 'Comment = Raspberry Pi Radio' >> $sambaconfigfile
-echo 'Path = /var/lib/mpd/playlists' >> $sambaconfigfile
-echo 'Browseable = yes' >> $sambaconfigfile
-echo 'Writeable = Yes' >> $sambaconfigfile
-echo 'only guest = no' >> $sambaconfigfile
-echo 'create mask = 0777' >> $sambaconfigfile
-echo 'directory mask = 0777' >> $sambaconfigfile
-echo 'Public = yes' >> $sambaconfigfile
-echo 'Guest ok = yes' >> $sambaconfigfile
-
-sudo smbpasswd -a pi
-sudo samba restart
-
-echo "./start_radio.sh" >> /home/pi/.profile
-
-
-
-
-	
 if [ ! -f $daemonconfigfile ]; then
 	# Generate config file for fan speed
 	sudo touch $daemonconfigfile
@@ -203,8 +116,6 @@ echo 'GPIO.setwarnings(False)' >> $powerbuttonscript
 echo 'GPIO.setmode(GPIO.BCM)' >> $powerbuttonscript
 echo 'shutdown_pin=4' >> $powerbuttonscript
 echo 'GPIO.setup(shutdown_pin, GPIO.IN,  pull_up_down=GPIO.PUD_DOWN)' >> $powerbuttonscript
-echo 'os.system("/home/pi/start_radio.sh")' >> $powerbuttonscript
-echo 'os.system("/home/pi/check_network.sh &")' >> $powerbuttonscript
 
 echo 'def shutdown_check():' >> $powerbuttonscript
 echo '	while True:' >> $powerbuttonscript
@@ -550,7 +461,7 @@ if [ -d "/home/pi/Desktop" ]; then
 	echo "Terminal=false" >> $shortcutfile
 	echo "Categories=None;" >> $shortcutfile
 	chmod 755 $shortcutfile
-	
+
 	shortcutfile="/home/pi/Desktop/argonone-uninstall.desktop"
 	echo "[Desktop Entry]" > $shortcutfile
 	echo "Name=Argon One Uninstall" >> $shortcutfile
@@ -577,11 +488,107 @@ else
 fi
 echo
 
-sudo cp -f ./mpd.conf /etc
+
+argonone-config
+
+
+
+sambaconfigfile=/etc/samba/smb.conf
+radiostartfile=~/start_radio.sh
+radiofolder=/var/lib/mpd/playlists
+radiofile=/var/lib/mpd/playlists/preset_0.m3u
+wificheckfile=~/check_network.sh
+
+sudo raspi-config nonint do_ssh 0
+sudo raspi-config nonint do_boot_behaviour B2
+sudo raspi-config nonint do_expand_rootfs
+
+
+sudo apt-get install samba -y
+sudo apt-get install samba-common-bin -y
+
+sudo chmod 775 /var/lib/mpd/playlists/
+
+if [ ! -f $radiofile ]; then
+	# Generate radio playlist
+	sudo touch $radiofile
+    sudo chmod 666 $radiofile
+    echo '#EXTM3U' >> $radiofile
+    echo '#EXTINF:-1,Cafe Del Mar Radio' >> $radiofile
+    echo 'https://streams.radio.co/se1a320b47/listen' >> $radiofile
+
+    echo '#EXTINF:-1,SomaFM - Lush' >> $radiofile
+    echo 'http://ice1.somafm.com/lush-128-aac' >> $radiofile
+
+    echo '#EXTINF:-1,SomaFM - Groove Salad' >> $radiofile
+    echo 'http://ice1.somafm.com/groovesalad-128-aac' >> $radiofile
+
+    echo '#EXTINF:-1,SomaFM - Groove Salad Classic' >> $radiofile
+    echo 'http://ice2.somafm.com/gsclassic-128-aac' >> $radiofile
+
+    echo '#EXTINF:-1,SomaFM - Fluid' >> $radiofile
+    echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile
+fi
+
+cp start_radio.sh /home/pi/
+cp stop_radio.sh /home/pi/
+
+sudo chmod +x /home/pi/start_radio.sh
+sudo chmod +x /home/pi/stop_radio.sh
+
+
+
+
+
+sudo chmod 777 /var/lib/mpd/playlists/*
+sudo chmod 666 $sambaconfigfile
+
+if [ ! -f $wificheckfile ]; then
+    sudo touch $wificheckfile
+    sudo chmod 777 $wificheckfile
+    echo '#!/bin/bash' >> $wificheckfile
+    echo 'while true ; do' >> $wificheckfile
+    echo ' if ifconfig wlan0 | grep -q "inet addr:" ; then' >> $wificheckfile
+    echo '  sleep 15' >> $wificheckfile
+    echo ' else' >> $wificheckfile
+    echo '  echo "Network connection down! Attempting reconnection."' >> $wificheckfile
+    echo '  ifup --force wlan0' >> $wificheckfile
+    echo '  sleep 5' >> $wificheckfile
+    echo '  mpc play' >> $wificheckfile
+    echo ' fi' >> $wificheckfile
+    echo 'done' >> $wificheckfile
+fi
+
+
+echo '[RADIO]' >> $sambaconfigfile
+echo 'Comment = Raspberry Pi Radio' >> $sambaconfigfile
+echo 'Path = /var/lib/mpd/playlists' >> $sambaconfigfile
+echo 'Browseable = yes' >> $sambaconfigfile
+echo 'Writeable = Yes' >> $sambaconfigfile
+echo 'only guest = no' >> $sambaconfigfile
+echo 'create mask = 0777' >> $sambaconfigfile
+echo 'directory mask = 0777' >> $sambaconfigfile
+echo 'Public = yes' >> $sambaconfigfile
+echo 'Guest ok = yes' >> $sambaconfigfile
+
+sudo smbpasswd -a pi
+sudo samba restart
+
+echo "./start_radio.sh" >> /home/pi/.profile
+
+sudo cp -f mpd.conf /etc/mpd
 
 cd tts
-dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
+sudo dpkg -i libttspico-data_*all.deb libttspico-utils*.deb libttspico0*.deb
 
-sleep 20
+sleep 5
 
+clear
+echo "And Finally ... Set Audio Master Level above 50 ( 85 Recommended )"
+
+sleep 10
+alsamixer
+
+sleep 10
+sudo rfkill unblock 0
 sudo reboot
