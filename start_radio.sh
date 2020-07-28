@@ -147,7 +147,7 @@ do
                         NOWDATA=$(ifconfig wlan0 | grep "RX" | head -1)
 			IFS='('
         			read -ra DATABITS <<< "$NOWDATA"
-			mpc -q volume 60
+			mpc -q volume 85
 			ispeak "Welcome Back. ${DATABITS[1]} of data used."
 			mpc -q play
                 fi
