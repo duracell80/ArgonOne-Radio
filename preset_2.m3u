@@ -1,0 +1,19 @@
+#EXTM3U
+
+#EXTINF:-1,Audiophile - Lounge
+http://94.23.201.38:8030/stream/1/
+
+#EXTINF:-1,Audiophile - Jazz
+http://94.23.201.38:8020/stream/1/
+
+#EXTINF:-1,ON Radio - Jazz
+http://0n-jazz.radionetz.de/0n-jazz.mp3
+
+#EXTINF:-1, Jazz Radio Blues
+http://jazzblues.ice.infomaniak.ch/jazzblues-high.mp3
+
+#EXTINF:-1, 1 FM - Bay Smooth Zazz
+http://strm112.1.fm/smoothjazz_mobile_mp3
+
+#EXTINF:-1, Dash Radio - Cool Jazz
+http://ice55.securenetsystems.net/DASH6
