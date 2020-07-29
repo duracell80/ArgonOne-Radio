@@ -517,24 +517,24 @@ if [ ! -f $radiofile ]; then
     echo '#EXTINF:-1,Cafe Del Mar Radio' >> $radiofile
     echo 'https://streams.radio.co/se1a320b47/listen' >> $radiofile
 
-    echo '#EXTINF:-1,SomaFM - Lush' >> $radiofile
+    echo '#EXTINF:-1,Soma FM - Lush' >> $radiofile
     echo 'http://ice1.somafm.com/lush-128-aac' >> $radiofile
 
-    echo '#EXTINF:-1,SomaFM - Groove Salad' >> $radiofile
+    echo '#EXTINF:-1,Soma FM - Groove Salad' >> $radiofile
     echo 'http://ice1.somafm.com/groovesalad-128-aac' >> $radiofile
 
-    echo '#EXTINF:-1,SomaFM - Groove Salad Classic' >> $radiofile
+    echo '#EXTINF:-1,Soma FM - Groove Salad Classic' >> $radiofile
     echo 'http://ice2.somafm.com/gsclassic-128-aac' >> $radiofile
 
-    echo '#EXTINF:-1,SomaFM - Fluid' >> $radiofile
+    echo '#EXTINF:-1,Soma FM - Fluid' >> $radiofile
     echo 'http://ice1.somafm.com/fluid-128-aac' >> $radiofile
 fi
 
-cp start_radio.sh /home/pi/
-cp stop_radio.sh /home/pi/
+cp start_radio.sh ~/
+cp stop_radio.sh ~/
 
-sudo chmod +x /home/pi/start_radio.sh
-sudo chmod +x /home/pi/stop_radio.sh
+sudo chmod +x ~/start_radio.sh
+sudo chmod +x ~/stop_radio.sh
 
 
 
@@ -574,7 +574,7 @@ echo 'Guest ok = yes' >> $sambaconfigfile
 sudo smbpasswd -a pi
 sudo samba restart
 
-echo "./start_radio.sh" >> /home/pi/.profile
+echo "./start_radio.sh" >> ~/.profile
 
 sudo cp -f mpd.conf /etc/
 

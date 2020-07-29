@@ -71,7 +71,7 @@ do
 	NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
 
 	# KILL THIS SCRIPT
-        if [[ $KEYS == *"172"* ]]; then
+        if [[ $KEYS == *"1"* ]]; then
                 echo "Remote: Exit Remote Control"
                 mpc stop
 		pkill start_radio.sh
@@ -211,17 +211,6 @@ do
 		mpc prev
         fi
 
-
-
-	# BACK OR HOME KEY
-        if [[ $KEYS == "keycode   1 release" ]]; then
-                echo "Remote: Loading Default Playlist ..."
-                mpc clear
-                mpc repeat on
-                mpc load preset_0
-                mpc -q play
-        fi
-
 	# PLAY PAUSE TOGGLE (p)
         if [[ $KEYS == *"25"* ]]; then
                 echo "Remote: Play Pause"
@@ -241,7 +230,7 @@ done &
 while :
 do
 	# SIGTERM SHOWKEY TO SPEED UP REMOTE CONTROL RESPONSIVENESS
-	sleep 0.2
+	sleep 1
 	sudo pkill showkey
 
 	YOLO=$(mpc status | sed -n '/volume/p' | cut -c8-10 | sed 's/^[ \t]*//')
