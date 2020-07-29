@@ -1,0 +1,16 @@
+#EXTM3U
+
+#EXTINF:-1,Dash Radio - Waves
+http://ice55.securenetsystems.net/DASH55
+
+#EXTINF:-1,SomaFM - Lush
+http://ice1.somafm.com/lush-128-aac
+
+#EXTINF:-1,SomaFM - Groove Salad
+http://ice1.somafm.com/groovesalad-128-aac
+
+#EXTINF:-1,SomaFM - Groove Salad Classic
+http://ice2.somafm.com/gsclassic-128-aac
+
+#EXTINF:-1,ON Radio - Chillout (Germany)
+http://0n-chillout.radionetz.de/0n-chillout.aac
