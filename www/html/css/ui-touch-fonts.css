@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(../fonts/MaterialIcons-Regular.woff2) format('woff2'),
+    url(../fonts/MaterialIcons-Regular.woff) format('woff'),
+    url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Baloo2 Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Baloo2-Regular.eot); /* For IE6-8 */
+  src: local('Baloo2 Regular'),
+    local('Baloo2 Regular'),
+    url(../fonts/Baloo2-Regular.woff2) format('woff2'),
+    url(../fonts/Baloo2-Regular.woff) format('woff'),
+    url(../fonts/Baloo2-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+.material-icons { font-size: 36px; }
+.material-icons.lg-64 { font-size: 64px; }
+
+
+/* Pi Touch (landscape) ----------- */
+@media only screen and (max-device-width : 800px) and (orientation : landscape) {
+    .material-icons.l-pi-0 { font-size: 0px; }
+    .material-icons.l-pi-16 { font-size: 16px; }
+    .material-icons.l-pi-18 { font-size: 18px; }
+    .material-icons.l-pi-24 { font-size: 24px; }
+    .material-icons.l-pi-36 { font-size: 36px; }
+    .material-icons.l-pi-48 { font-size: 48px; }
+    .material-icons.l-pi-56 { font-size: 56px; }
+    .material-icons.l-pi-64 { font-size: 64px; }
+    .material-icons.l-pi-78 { font-size: 78px; }
+    .material-icons.l-pi-84 { font-size: 84px; }
+    .material-icons.l-pi-128 { font-size: 128px; }
+}
+
+/* Pi Touch (portrait) ----------- */
+@media only screen and (max-device-width : 480px) and (orientation : portrait) {
+    .material-icons.p-pi-0 { font-size: 0px; }
+    .material-icons.p-pi-16 { font-size: 16px; }
+    .material-icons.p-pi-18 { font-size: 18px; }
+    .material-icons.p-pi-24 { font-size: 24px; }
+    .material-icons.p-pi-36 { font-size: 36px; }
+    .material-icons.p-pi-48 { font-size: 48px; }
+    .material-icons.p-pi-56 { font-size: 56px; }
+    .material-icons.p-pi-64 { font-size: 64px; }
+    .material-icons.p-pi-78 { font-size: 78px; }
+    .material-icons.p-pi-84 { font-size: 84px; }
+    .material-icons.p-pi-128 { font-size: 128px; }
+}
+

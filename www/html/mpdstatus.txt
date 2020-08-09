@@ -1,0 +1,7 @@
+station=Radio SoBro
+playing=UNSECRET & Elise Hayes - Breathe
+elapsed=4
+volume=85
+wlan=(
+eth=192.168.2.180(6.0 MiB)
+temp=51.5'C

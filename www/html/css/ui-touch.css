@@ -1,0 +1,102 @@
+body {
+    background-color : #000;
+    color : #fff;    
+    overflow:hidden;
+    padding : 3em;
+}
+
+
+.wrapper {
+    overflow : hidden;
+}
+
+
+.main {
+    background : #000;
+    color : #fff;
+}
+
+.hud {
+   font-family : "Baloo2 Regular";
+    padding:2em 5em 5em 5em;
+    clear : both;
+}
+
+.hud ul {
+    list-style : none;
+    margin-left : 0em;
+    padding-left : 0em;
+}
+
+.hud .meta {
+    text-align : center;
+}
+
+.hud .meta .station {
+    font-size : 3em;
+}
+
+.hud .meta .playing {
+    font-size : 2em;
+}
+
+.hud .meta .elapsed {
+    font-size : 2em;
+}
+
+
+
+
+.sys {
+    display : block;
+    text-align : right;
+    float : right;
+}
+.sys-icon {
+    display         : table-cell;
+    width           : 75px;
+    min-height      : 100px;
+    text-align      : center;
+    padding-right    : 3em;
+}
+
+
+
+
+.clearfix {
+    clear : both;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+
+/* Desktop (landscape) ----------- */
+@media (min-width: 1281px) {
+
+}
+
+
+
+
+/* Pi Touch (landscape) ----------- */
+@media only screen and (max-device-width : 850px) and (orientation : landscape) {
+
+}
+
+/* Pi Touch (portrait) ----------- */
+@media only screen and (max-device-width : 480px) and (orientation : portrait) {
+
+
+}
+
+
+
+
+/* Pi Touch (landscape) ----------- */
+@media only screen and (max-device-height : 411px) and (orientation : landscape) {
+ 
+
+}

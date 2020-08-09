@@ -10,10 +10,15 @@ ETHO=$(ifconfig eth0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-
 YOLO=$(mpc status | sed -n '/volume/p' | cut -c8-10 | sed 's/^[ \t]*//')
 
 NOWTEMP=$(vcgencmd measure_temp)
-NOWDATA=$(ifconfig wlan0 | grep "RX" | head -1)
-IFS='('
-        read -ra DATABITS <<< "$NOWDATA"
-printf "Online Radio Tuner \n[ vol=${YOLO} wlan=${WLAN} eth=${ETHO} ${NOWTEMP} data=(${DATABITS[1]} ]\n\n"
+
+WNOWDATA=$(ifconfig wlan0 | grep "RX" | head -1)
+	IFS='('
+	read -ra WDATABITS <<< "$WNOWDATA"
+ENOWDATA=$(ifconfig eth0 | grep "RX" | head -1)
+	IFS='('
+	read -ra EDATABITS <<< "$ENOWDATA"
+
+printf "Online Radio Tuner \n[ vol=${YOLO} wlan=${WLAN} eth=${ETHO} ${NOWTEMP} data=(${WDATABITS[1]} ]\n\n"
 printf "	Q		= quit\n"
 printf "        Up & Down       = Next Prev\n"
 printf "        Left & Right    = Volume\n"
@@ -71,7 +76,7 @@ do
 	NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
 
 	# KILL THIS SCRIPT
-        if [[ $KEYS == *"1"* ]]; then
+        if [[ $KEYS == *"172"* ]]; then
                 echo "Remote: Exit Remote Control"
                 mpc stop
 		pkill start_radio.sh
@@ -184,49 +189,6 @@ do
                 ispeak "Now Tuned To ${SNAME}"
 
         fi
-        
-        
-    # NEXT STATION - CAR STEERING WHEEL
-        if [[ $KEYS == *"163"* ]]; then
-                echo "Car Control: Next Station"
-		mpc -q play
-		mpc -q next
-
-		SNAME=$(mpc -f %name% | head -n 1)
-                ispeak "Now Tuned To ${SNAME}"
-
-		sleep 2
-		NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
-                TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
-                if [ $TLEN -lt 10 ] ; then
-                  echo "Now Playing: Missing Station Metadata"
-                else
-                  echo "\n\nYou are listening to: ${NOWPLAYING}"
-                        ispeak "You are listening to ${NOWPLAYING}"
-                fi
-
-        fi
-
-	# PREV STATION - CAR STEERING WHEEL
-        if [[ $KEYS == *"165"* ]]; then
-                echo "Car Control: Previous Station"
-                mpc -q play
-                mpc -q prev
-
-                SNAME=$(mpc -f %name% | head -n 1)
-                ispeak "Now Tuned To ${SNAME}"
-
-		sleep 2
-		NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
-                TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
-                if [ $TLEN -lt 10 ] ; then
-                  echo "Now Playing: Missing Station Metadata"
-                else
-                  echo "\n\nYou are listening to: ${NOWPLAYING}"
-                        ispeak "You are listening to ${NOWPLAYING}"
-                fi
-
-        fi    
 
 	# VOLUME UP
         if [[ $KEYS == *"106"* ]]; then
@@ -244,14 +206,25 @@ do
         if [[ $KEYS == *"115"* ]]; then
                 echo "Remote: Next Station"
                 mpc -q play
-		        mpc -q next
+		mpc -q next
         fi
 
         # VOLUME DOWN ANDROID TV REMOTE
         if [[ $KEYS == *"114"* ]]; then
                 echo "Remote: Previous Station"
+                mpc play
+		mpc prev
+        fi
+
+
+
+	# BACK OR HOME KEY
+        if [[ $KEYS == "keycode   1 release" ]]; then
+                echo "Remote: Loading Default Playlist ..."
+                mpc clear
+                mpc repeat on
+                mpc load preset_0
                 mpc -q play
-		        mpc -q prev
         fi
 
 	# PLAY PAUSE TOGGLE (p)
@@ -259,21 +232,6 @@ do
                 echo "Remote: Play Pause"
                 mpc -q toggle
         fi
-        
-    # PLAY PAUSE TOGGLE - CAR STEERING WHEEL
-        if [[ $KEYS == *"200"* ]]; then
-                echo "Car Control: Play"
-                mpc -q play
-                sleep 2
-		        NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
-                TLEN=$(mpc -f "%album% %track% %title%" | head -n 1 | wc -m)
-                if [ $TLEN -lt 10 ] ; then
-                  echo "Now Playing: Missing Station Metadata"
-                else
-                  echo "\n\nYou are listening to: ${NOWPLAYING}"
-                        ispeak "You are listening to ${NOWPLAYING}"
-                fi
-        fi    
 
 	# KILL REMOTE WATCHDOG (q)
         if [[ $KEYS == *"16"* ]]; then
@@ -293,14 +251,17 @@ do
 
 	YOLO=$(mpc status | sed -n '/volume/p' | cut -c8-10 | sed 's/^[ \t]*//')
 	NOWTEMP=$(vcgencmd measure_temp)
-	NOWDATA=$(ifconfig wlan0 | grep "RX" | head -1)
 
-
+	WNOWDATA=$(ifconfig wlan0 | grep "RX" | head -1)
 	IFS='('
-	read -ra DATABITS <<< "$NOWDATA"
+	read -ra WDATABITS <<< "$WNOWDATA"
+
+	ENOWDATA=$(ifconfig eth0 | grep "RX" | head -1)
+	IFS='('
+	read -ra EDATABITS <<< "$ENOWDATA"
 
 	clear
-	printf "Online Radio Tuner \n[ vol=${YOLO} wlan=${WLAN} eth=${ETHO} ${NOWTEMP} data=(${DATABITS[1]} ]\n\n"
+	printf "Online Radio Tuner \n[ vol=${YOLO} wlan=${WLAN} eth=${ETHO} ${NOWTEMP} data=(${WDATABITS[1]} ]\n\n"
 
 	printf "        Q               = quit\n"
 	printf "        Up & Down       = Next Prev\n"
@@ -311,7 +272,19 @@ do
 
 
 	NOWNAME=$(mpc -f %name% | head -n 1)
-	NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1)
+	NOWPLAYING=$(mpc -f "%album% %track% %title%"  | head -n 1 | awk '{gsub(/^ +| +$/,"")} {print $0}')
+	NOWELAPSED=$(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,"",$3); split($3,a,/:/); print a[1]*60+a[2] }')
 	printf "Now Playing: $NOWNAME - $NOWPLAYING \n\n\n"
+
+	printf "station=${NOWNAME}\nplaying=${NOWPLAYING}\nelapsed=${NOWELAPSED}\nvolume=${YOLO}\nwlan=${WLAN}-${WDATABITS[1]//)}\neth=${ETHO}-${EDATABITS[1]//)}\n${NOWTEMP//temp=}" > /var/www/html/status.txt
+	printf '{
+	"station":"'${NOWNAME}'", 
+    	"playing": "'${NOWPLAYING}'",
+    	"elapsed": "'${NOWELAPSED}'",
+    	"volume": "'${YOLO}'",
+    	"wlan": "'${WLAN}':'${WDATABITS[1]//)}'",
+    	"eth": "'${ETHO}':'${EDATABITS[1]//)}'",
+    	"temp": "'${NOWTEMP//temp=}'"
+	}' > /var/www/html/status.json
 
 done&
